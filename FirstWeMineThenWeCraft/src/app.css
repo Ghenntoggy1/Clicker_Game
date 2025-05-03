@@ -5,3 +5,4 @@
 /* @import '@skeletonlabs/skeleton/themes/catppuccin'; */
 
 @source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
+@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
