@@ -8,4 +8,5 @@ export default defineConfig({
     tailwindcss(),
     svelte()
   ],
+  base: '/Clicker_Game/FirstWeMineThenWeCraft/',
 })
