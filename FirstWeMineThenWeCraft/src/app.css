@@ -2,7 +2,11 @@
 
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton/optional/presets';
-/* @import '@skeletonlabs/skeleton/themes/catppuccin'; */
+@import '@skeletonlabs/skeleton/themes/modern';
 
 @source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
 @custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+
+html * {
+    @apply transition-colors duration-150;
+}
