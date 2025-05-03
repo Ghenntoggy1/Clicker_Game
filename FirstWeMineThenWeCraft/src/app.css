@@ -2,7 +2,7 @@
 
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton/optional/presets';
-@import '@skeletonlabs/skeleton/themes/terminus';
+@import '@skeletonlabs/skeleton/themes/pine';
 
 @source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
 @custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
@@ -10,7 +10,7 @@
 @layer base {
     @font-face {
         font-family: 'MinecraftRegular';
-        src: url(../public/fonts/MinecraftRegular-Bmg3.otf) format("opentype");
+        src: url(../fonts/MinecraftRegular-Bmg3.otf) format("opentype");
     }
 }
 
@@ -18,7 +18,7 @@ html * {
     @apply transition-colors duration-150;
 }
 
-[data-theme='terminus'] {
+[data-theme='pine'] {
     --heading-font-family: 'MinecraftRegular';
     --base-font-family: 'MinecraftRegular';
     --anchor-font-family: 'inherit';
