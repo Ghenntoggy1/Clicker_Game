@@ -4,9 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Clicker_Game/',
   plugins: [
     tailwindcss(),
     svelte()
   ],
-  base: '/Clicker_Game/FirstWeMineThenWeCraft/',
 })
