@@ -5,6 +5,6 @@
   }
 </script>
 
-<button onclick={increment}>
-  count is {count}
+<button onclick={increment} class="px-4 py-2 rounded ">
+  {count}
 </button>
