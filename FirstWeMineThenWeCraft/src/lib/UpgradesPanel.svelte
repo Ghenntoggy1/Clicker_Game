@@ -64,12 +64,15 @@
         let upgradeCost = [];
         if (upgrade.maxLevel === null) {
             upgradeCost = upgrade.levels[0].cost;
-            upgradeCost = upgradeCost.map(item => {
-                return {
-                    type: item.type,
-                    amount: Math.round(item.amount * 1.3)
-                };
-            });
+            if (playerUpgradeLevel !== 0) {
+                console.log(playerUpgradeLevel, upgradeCost);
+                upgradeCost = upgradeCost.map(item => {
+                    return {
+                        type: item.type,
+                        amount: Math.min(item.type !== 'netherite' ? Math.round(item.amount * 1.05 * playerUpgradeLevel) : Math.round(item.amount * 1.07 * playerUpgradeLevel), 64)
+                    };
+                });
+            }
         }
         else {
             upgradeCost = upgrade.levels[playerUpgradeLevel].cost;
@@ -84,12 +87,15 @@
         let upgradeCost = [];
         if (upgrade.maxLevel === null) {
             upgradeCost = upgrade.levels[0].cost;
-            upgradeCost = upgradeCost.map(item => {
-                return {
-                    type: item.type,
-                    amount: Math.floor(item.amount + 1.2 * (playerUpgradeLevel))
-                };
-            });
+            if (playerUpgradeLevel !== 0) {
+                console.log(playerUpgradeLevel, upgradeCost);
+                upgradeCost = upgradeCost.map(item => {
+                    return {
+                        type: item.type,
+                        amount: Math.min(item.type !== 'netherite' ? Math.round(item.amount * 1.05 * playerUpgradeLevel) : Math.round(item.amount * 1.07 * playerUpgradeLevel), 64)
+                    };
+                });
+            }
         }
         else {
             upgradeCost = upgrade.levels[playerUpgradeLevel === 0 ? 0 : playerUpgradeLevel].cost;
@@ -134,6 +140,8 @@
         for (const costItem of upgradeCost) {
             const inventoryItem = inventoryObj.find(item => item.type === costItem.type);
             if (!inventoryItem || inventoryItem.amount < costItem.amount) {
+                console.log(upgrade.name, inventoryItem, costItem);
+
                 return false;
             }
         }
