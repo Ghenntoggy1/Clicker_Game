@@ -12,7 +12,7 @@ export const upgrades = [
                     amount: 5 
                 },
               ],
-              icon: '/tools/wood_pickaxe.png',
+              icon: '/wooden_pickaxe.webp',
               effect: { durabilityReduction: 1 }
             },
             { 
@@ -27,7 +27,7 @@ export const upgrades = [
                     amount: 20
                 }
               ],
-              icon: '/tools/stone_pickaxe.png',
+              icon: '/stone_pickaxe.webp',
               effect: { durabilityReduction: 2 }
             },
             { 
@@ -42,7 +42,7 @@ export const upgrades = [
                     amount: 25
                 }
               ],
-              icon: '/tools/iron_pickaxe.png',
+              icon: '/iron_pickaxe.webp',
               effect: { durabilityReduction: 3 }
             },
             { 
@@ -57,7 +57,7 @@ export const upgrades = [
                     amount: 40
                 }
               ],
-              icon: '/tools/diamond_pickaxe.png',
+              icon: '/diamond_pickaxe.webp',
               effect: { durabilityReduction: 4 }
             },
             { 
@@ -76,7 +76,7 @@ export const upgrades = [
                     amount: 15
                 }
               ],
-              icon: '/tools/netherite_pickaxe.png',
+              icon: '/netherite_pickaxe.webp',
               effect: { durabilityReduction: 5 }
             }
         ],
@@ -95,7 +95,7 @@ export const upgrades = [
                     amount: 5 
                 },
               ],
-              icon: '/tools/wood_axe.png',
+              icon: '/wooden_axe.webp',
               effect: { durabilityReduction: 1 }
             },
             { 
@@ -110,7 +110,7 @@ export const upgrades = [
                     amount: 20
                 }
               ],
-              icon: '/tools/stone_axe.png',
+              icon: '/stone_axe.webp',
               effect: { durabilityReduction: 2 }
             },
             { 
@@ -125,7 +125,7 @@ export const upgrades = [
                     amount: 25
                 }
               ],
-              icon: '/tools/iron_axe.png',
+              icon: '/iron_axe.webp',
               effect: { durabilityReduction: 3 }
             },
             { 
@@ -140,7 +140,7 @@ export const upgrades = [
                     amount: 40
                 }
               ],
-              icon: '/tools/diamond_axe.png',
+              icon: '/diamond_axe.webp',
               effect: { durabilityReduction: 4 }
             },
             { 
@@ -159,7 +159,7 @@ export const upgrades = [
                     amount: 15
                 }
               ],
-              icon: '/tools/netherite_axe.png',
+              icon: '/netherite_axe.webp',
               effect: { durabilityReduction: 5 }
             }
         ],
@@ -178,7 +178,7 @@ export const upgrades = [
                     amount: 3
                 },
               ],
-              icon: '/tools/wood_shovel.png',
+              icon: '/wooden_shovel.webp',
               effect: { durabilityReduction: 1 }
             },
             { 
@@ -193,7 +193,7 @@ export const upgrades = [
                     amount: 15
                 }
               ],
-              icon: '/tools/stone_shovel.png',
+              icon: '/stone_shovel.webp',
               effect: { durabilityReduction: 2 }
             },
             { 
@@ -208,7 +208,7 @@ export const upgrades = [
                     amount: 20
                 }
               ],
-              icon: '/tools/iron_shovel.png',
+              icon: '/iron_shovel.webp',
               effect: { durabilityReduction: 3 }
             },
             { 
@@ -223,7 +223,7 @@ export const upgrades = [
                     amount: 30
                 }
               ],
-              icon: '/tools/diamond_shovel.png',
+              icon: '/diamond_shovel.webp',
               effect: { durabilityReduction: 4 }
             },
             { 
@@ -242,7 +242,7 @@ export const upgrades = [
                     amount: 7
                 }
               ],
-              icon: '/tools/netherite_shovel.png',
+              icon: '/netherite_shovel.webp',
               effect: { durabilityReduction: 5 }
             }
         ],
@@ -255,27 +255,72 @@ export const upgrades = [
         levels: [
             { 
               level: 1, 
-              cost: { type: 'emerald', amount: 5 },
+              cost: [
+                {
+                    type: 'emerald', 
+                    amount: 5 
+                },
+                {
+                    type: 'flint',
+                    amount: 10
+                }
+            ],
               effect: { resourceChance: 0.1 }
             },
             { 
               level: 2, 
-              cost: { type: 'emerald', amount: 15 },
+              cost: [
+                {
+                    type: 'emerald', 
+                    amount: 15 
+                },
+                {
+                    type: 'flint',
+                    amount: 20
+                }
+            ],
               effect: { resourceChance: 0.2 }
             },
             { 
               level: 3, 
-              cost: { type: 'emerald', amount: 30 },
+              cost: [
+                {
+                    type: 'emerald', 
+                    amount: 20 
+                },
+                {
+                    type: 'flint',
+                    amount: 25
+                }
+            ],
               effect: { resourceChance: 0.3 }
             },
             { 
               level: 4, 
-              cost: { type: 'emerald', amount: 50 },
+              cost: [
+                {
+                    type: 'emerald', 
+                    amount: 50 
+                },
+                {
+                    type: 'flint',
+                    amount: 35
+                }
+            ],
               effect: { resourceChance: 0.4 }
             },
             { 
               level: 5, 
-              cost: { type: 'emerald', amount: 64 },
+              cost: [
+                {
+                    type: 'emerald', 
+                    amount: 64 
+                },
+                {
+                    type: 'flint',
+                    amount: 50
+                }
+            ],
               effect: { resourceChance: 0.5 }
             }
         ],
@@ -289,7 +334,16 @@ export const upgrades = [
         levels: [
             { 
               level: 1, 
-              cost: { type: 'netherite', amount: 5 },
+              cost: [
+                { 
+                    type: 'netherite', 
+                    amount: 5 
+                },
+                {
+                    type: 'gold', 
+                    amount: 10 
+                }
+            ],
               effect: { autoClick: 0.1 }
             }
         ],

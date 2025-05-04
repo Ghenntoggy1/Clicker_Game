@@ -4,6 +4,8 @@
   import { soundEffects } from './lib/SoundEffects.js';
   import { inventory } from './lib/Inventory';
   import { upgrades } from './lib/Upgrades';
+  import UpgradesPanel from './lib/UpgradesPanel.svelte';
+  import { onMount } from 'svelte';
 
   let count = $state(Number(localStorage.getItem('count')) || 0);
   let currentBlock = $state(localStorage.getItem('lastBlock') || 'grass_block');
@@ -11,10 +13,47 @@
   let currentBlockImg = $state(blocks.find((block) => block.name === currentBlock).blockImg);
   let currentBlockInvType = $state(blocks.find((block) => block.name === currentBlock).invType);
   let currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
+  let playerUpgrades = $state(JSON.parse(localStorage.getItem('playerUpgrades')) || [
+        {
+            name: 'Pickaxe',
+            currentLevel: 0,
+        },
+        {
+            name: 'Axe',
+            currentLevel: 0,
+        },
+        {
+            name: 'Shovel',
+            currentLevel: 0,
+        },
+        {
+            name: 'Fortune',
+            currentLevel: 0,
+        },
+        {
+            name: 'AutoMine',
+            currentLevel: 0,
+        }
+    ]);
   let inventoryObj = $state(JSON.parse(localStorage.getItem('inventory')) || inventory);
 
   let song = null;
   let timesToHit = $state(1);
+
+  onMount(() => {
+    if (localStorage.getItem('count') === null) {
+      localStorage.setItem('count', '0');
+    }
+    if (localStorage.getItem('lastBlock') === null) {
+      localStorage.setItem('lastBlock', 'grass_block');
+    }
+    if (localStorage.getItem('playerUpgrades') === null) {
+      localStorage.setItem('playerUpgrades', JSON.stringify(playerUpgrades));
+    }
+    if (localStorage.getItem('inventory') === null) {
+      localStorage.setItem('inventory', JSON.stringify(inventoryObj));
+    }
+  })
 
   const increment = () => {
     timesToHit--;
@@ -52,7 +91,7 @@
   };
 </script>
 
-<main class="h-screen md:overflow-hidden">
+<main class="h-screen lg:overflow-hidden">
   <div class="grid grid-rows-[auto_1fr_auto]">
     <header class="sticky top-0 z-10 p-4 shadow-md backdrop-blur-sm">
       <div class="flex justify-between items-center">
@@ -86,9 +125,9 @@
       </div>
       <span class="vr hidden md:block border-l-2"></span>
       <hr class="hr block: md:hidden border-t-2" />
-      <!-- TODO: Add Upgrades alongside with Filters and Favorites/Bought -->
       <div class="flex flex-col items-center w-full md:w-2/3 p-4 flex-grow">
         <h1 class="h1 text-lg font-bold mb-4">Upgrades</h1>
+        <UpgradesPanel {playerUpgrades} {inventoryObj} />
       </div>
     </div>
   </div>
