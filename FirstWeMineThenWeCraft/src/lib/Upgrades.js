@@ -13,7 +13,7 @@ export const upgrades = [
                 },
               ],
               icon: '/wooden_pickaxe.webp',
-              effect: { durabilityReduction: 1 }
+              effect: { durabilityReduction: 0.3 }
             },
             { 
               level: 2, 
@@ -28,7 +28,7 @@ export const upgrades = [
                 }
               ],
               icon: '/stone_pickaxe.webp',
-              effect: { durabilityReduction: 2 }
+              effect: { durabilityReduction: 0.8 }
             },
             { 
               level: 3, 
@@ -43,7 +43,7 @@ export const upgrades = [
                 }
               ],
               icon: '/iron_pickaxe.webp',
-              effect: { durabilityReduction: 3 }
+              effect: { durabilityReduction: 1.5 }
             },
             { 
               level: 4, 
@@ -58,7 +58,7 @@ export const upgrades = [
                 }
               ],
               icon: '/diamond_pickaxe.webp',
-              effect: { durabilityReduction: 4 }
+              effect: { durabilityReduction: 2 }
             },
             { 
               level: 5, 
@@ -77,7 +77,7 @@ export const upgrades = [
                 }
               ],
               icon: '/netherite_pickaxe.webp',
-              effect: { durabilityReduction: 5 }
+              effect: { durabilityReduction: 3 }
             }
         ],
         maxLevel: 5,
@@ -96,7 +96,7 @@ export const upgrades = [
                 },
               ],
               icon: '/wooden_axe.webp',
-              effect: { durabilityReduction: 1 }
+              effect: { durabilityReduction: 0.3 }
             },
             { 
               level: 2, 
@@ -111,7 +111,7 @@ export const upgrades = [
                 }
               ],
               icon: '/stone_axe.webp',
-              effect: { durabilityReduction: 2 }
+              effect: { durabilityReduction: 0.8 }
             },
             { 
               level: 3, 
@@ -126,7 +126,7 @@ export const upgrades = [
                 }
               ],
               icon: '/iron_axe.webp',
-              effect: { durabilityReduction: 3 }
+              effect: { durabilityReduction: 1.5 }
             },
             { 
               level: 4, 
@@ -141,7 +141,7 @@ export const upgrades = [
                 }
               ],
               icon: '/diamond_axe.webp',
-              effect: { durabilityReduction: 4 }
+              effect: { durabilityReduction: 2 }
             },
             { 
               level: 5, 
@@ -160,7 +160,7 @@ export const upgrades = [
                 }
               ],
               icon: '/netherite_axe.webp',
-              effect: { durabilityReduction: 5 }
+              effect: { durabilityReduction: 3 }
             }
         ],
         maxLevel: 5,
@@ -179,7 +179,7 @@ export const upgrades = [
                 },
               ],
               icon: '/wooden_shovel.webp',
-              effect: { durabilityReduction: 1 }
+              effect: { durabilityReduction: 0.3 }
             },
             { 
               level: 2, 
@@ -194,7 +194,7 @@ export const upgrades = [
                 }
               ],
               icon: '/stone_shovel.webp',
-              effect: { durabilityReduction: 2 }
+              effect: { durabilityReduction: 0.8 }
             },
             { 
               level: 3, 
@@ -209,7 +209,7 @@ export const upgrades = [
                 }
               ],
               icon: '/iron_shovel.webp',
-              effect: { durabilityReduction: 3 }
+              effect: { durabilityReduction: 1.5 }
             },
             { 
               level: 4, 
@@ -224,7 +224,7 @@ export const upgrades = [
                 }
               ],
               icon: '/diamond_shovel.webp',
-              effect: { durabilityReduction: 4 }
+              effect: { durabilityReduction: 2 }
             },
             { 
               level: 5, 
@@ -243,86 +243,86 @@ export const upgrades = [
                 }
               ],
               icon: '/netherite_shovel.webp',
-              effect: { durabilityReduction: 5 }
+              effect: { durabilityReduction: 3 }
             }
         ],
         maxLevel: 5,
     },
     {
-        type: 'enchantment',
-        name: 'Fortune',
-        description: 'Increases the chance of getting more resources from mining.',
-        levels: [
-            { 
-              level: 1, 
-              cost: [
-                {
-                    type: 'emeralds', 
-                    amount: 5 
-                },
-                {
-                    type: 'flint',
-                    amount: 10
-                }
-            ],
-              effect: { resourceChance: 0.1 }
-            },
-            { 
-              level: 2, 
-              cost: [
-                {
-                    type: 'emeralds', 
-                    amount: 15 
-                },
-                {
-                    type: 'flint',
-                    amount: 20
-                }
-            ],
-              effect: { resourceChance: 0.2 }
-            },
-            { 
-              level: 3, 
-              cost: [
-                {
-                    type: 'emeralds', 
-                    amount: 20 
-                },
-                {
-                    type: 'flint',
-                    amount: 25
-                }
-            ],
-              effect: { resourceChance: 0.3 }
-            },
-            { 
-              level: 4, 
-              cost: [
-                {
-                    type: 'emeralds', 
-                    amount: 50 
-                },
-                {
-                    type: 'flint',
-                    amount: 35
-                }
-            ],
-              effect: { resourceChance: 0.4 }
-            },
-            { 
-              level: 5, 
-              cost: [
-                {
-                    type: 'emeralds', 
-                    amount: 64 
-                },
-                {
-                    type: 'flint',
-                    amount: 50
-                }
-            ],
-              effect: { resourceChance: 0.5 }
-            }
+      type: 'enchantment',
+      name: 'Fortune',
+      description: 'Increases the chance of getting more resources from mining.',
+      levels: [
+          { 
+            level: 1, 
+            cost: [
+              {
+                  type: 'emeralds', 
+                  amount: 5 
+              },
+              {
+                  type: 'flint',
+                  amount: 10
+              }
+          ],
+            effect: { resourceChance: 0.1 }
+          },
+          { 
+            level: 2, 
+            cost: [
+              {
+                  type: 'emeralds', 
+                  amount: 15 
+              },
+              {
+                  type: 'flint',
+                  amount: 20
+              }
+          ],
+            effect: { resourceChance: 0.2 }
+          },
+          { 
+            level: 3, 
+            cost: [
+              {
+                  type: 'emeralds', 
+                  amount: 20 
+              },
+              {
+                  type: 'flint',
+                  amount: 25
+              }
+          ],
+            effect: { resourceChance: 0.3 }
+          },
+          { 
+            level: 4, 
+            cost: [
+              {
+                type: 'emeralds', 
+                amount: 50 
+              },
+              {
+                type: 'flint',
+                amount: 35
+              }
+          ],
+            effect: { resourceChance: 0.4 }
+          },
+          { 
+            level: 5, 
+            cost: [
+              {
+                type: 'emeralds', 
+                amount: 64 
+              },
+              {
+                type: 'flint',
+                amount: 50
+              }
+          ],
+            effect: { resourceChance: 0.5 }
+          }
         ],
         maxLevel: 5,
         icon: '/enchanted_book.webp',
@@ -332,20 +332,20 @@ export const upgrades = [
         name: 'AutoMine',
         description: 'Automatically mines blocks in front of you.',
         levels: [
-            { 
-              level: 1, 
-              cost: [
-                { 
-                    type: 'netherite', 
-                    amount: 5 
-                },
-                {
-                    type: 'gold', 
-                    amount: 10 
-                }
-            ],
-              effect: { autoClick: 0.1 }
-            }
+          { 
+            level: 1, 
+            cost: [
+              { 
+                type: 'netherite', 
+                amount: 5 
+              },
+              {
+                type: 'gold', 
+                amount: 10 
+              }
+          ],
+            effect: { autoClick: 0.1 }
+          }
         ],
         maxLevel: null,
         icon: '/enchanted_book.webp',

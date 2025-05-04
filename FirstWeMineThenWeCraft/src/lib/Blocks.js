@@ -1,7 +1,7 @@
 export const blocks = [
     {
         name: 'cobblestone_block',
-        durability: 3,
+        durability: 5,
         type: 'stone',
         invType: 'stone',
         blockImg: 'blocks/cobblestone_block.png',
@@ -9,7 +9,7 @@ export const blocks = [
     },
     {
         name: 'debris_block',
-        durability: 5,
+        durability: 10,
         type: 'debris',
         invType: 'netherite',
         blockImg: 'blocks/debris_block.png',
@@ -25,7 +25,7 @@ export const blocks = [
     },
     {
         name: 'planks_block',
-        durability: 2,
+        durability: 3,
         type: 'wood',
         invType: 'wood',
         blockImg: 'blocks/planks_block.png',
@@ -41,7 +41,7 @@ export const blocks = [
     },
     {
         name: 'blackstone_block',
-        durability: 3,
+        durability: 6,
         type: 'stone',
         invType: 'stone',
         blockImg: 'blocks/blackstone_block.png',
@@ -49,7 +49,7 @@ export const blocks = [
     },
     {
         name: 'deepslate_block',
-        durability: 4,
+        durability: 8,
         type: 'deepslate',
         invType: 'stone',
         blockImg: 'blocks/deepslate_block.png',
@@ -57,7 +57,7 @@ export const blocks = [
     },
     {
         name: 'coal_ore_block',
-        durability: 3,
+        durability: 5,
         type: 'stone',
         invType: 'ores',
         blockImg: 'blocks/coal_ore_block.png',
@@ -65,7 +65,7 @@ export const blocks = [
     },
     {
         name: 'iron_ore_block',
-        durability: 3,
+        durability: 5,
         type: 'stone',
         invType: 'ores',
         blockImg: 'blocks/iron_ore_block.png',
@@ -73,7 +73,7 @@ export const blocks = [
     },
     {
         name: 'gold_ore_block',
-        durability: 3,
+        durability: 5,
         type: 'stone',
         invType: 'ores',
         blockImg: 'blocks/gold_ore_block.png',
@@ -81,7 +81,7 @@ export const blocks = [
     },
     {
         name: 'diamond_ore_block',
-        durability: 3,
+        durability: 5,
         type: 'stone',
         invType: 'ores',
         blockImg: 'blocks/diamond_ore_block.png',
@@ -89,7 +89,7 @@ export const blocks = [
     },
     {
         name: 'emerald_ore_block',
-        durability: 3,
+        durability: 5,
         type: 'stone',
         invType: 'emeralds',
         blockImg: 'blocks/emerald_ore_block.png',
@@ -97,7 +97,7 @@ export const blocks = [
     },
     {
         name: 'lapis_ore_block',
-        durability: 3,
+        durability: 5,
         type: 'stone',
         invType: 'ores',
         blockImg: 'blocks/lapis_ore_block.png',
@@ -105,7 +105,7 @@ export const blocks = [
     },
     {
         name: 'redstone_ore_block',
-        durability: 3,
+        durability: 5,
         type: 'stone',
         invType: 'ores',
         blockImg: 'blocks/redstone_ore_block.png',
@@ -129,7 +129,7 @@ export const blocks = [
     },
     {
         name: 'gravel_block',
-        durability: 1,
+        durability: 2,
         type: 'gravel',
         invType: 'flint',
         blockImg: 'blocks/gravel_block.png',
