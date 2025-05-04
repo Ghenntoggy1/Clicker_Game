@@ -16,19 +16,19 @@
   let playerUpgradesState = $state(JSON.parse(localStorage.getItem('playerUpgrades')) || [
         {
             name: 'Pickaxe',
-            currentLevel: 0,
+            currentLevel: 5,
         },
         {
             name: 'Axe',
-            currentLevel: 0,
+            currentLevel: 5,
         },
         {
             name: 'Shovel',
-            currentLevel: 0,
+            currentLevel: 5,
         },
         {
             name: 'Fortune',
-            currentLevel: 0,
+            currentLevel: 5,
         },
         {
             name: 'AutoMine',
@@ -119,7 +119,7 @@
     if (timesToHit <= 0) {
       count++;
       localStorage.setItem('count', count.toString());
-      
+
       currentBlockInvType = blocks.find((block) => block.name === currentBlock).invType;
 
       let currentInventoryMineral = currentBlockInvType ? inventoryObjState.find(i => i.type === currentBlockInvType) : null;

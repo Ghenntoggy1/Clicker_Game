@@ -340,7 +340,7 @@ export const upgrades = [
                 amount: 5 
               },
               {
-                type: 'gold', 
+                type: 'emeralds', 
                 amount: 10 
               }
           ],
