@@ -10,7 +10,7 @@
 @layer base {
     @font-face {
         font-family: 'MinecraftRegular';
-        src: url(../fonts/MinecraftRegular-Bmg3.otf) format("opentype");
+        src: url(fonts/MinecraftRegular-Bmg3.otf) format("opentype");
     }
 }
 
