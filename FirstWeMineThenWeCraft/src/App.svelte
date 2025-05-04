@@ -3,6 +3,7 @@
   import { blocks } from './lib/Blocks.js';
   import { soundEffects } from './lib/SoundEffects.js';
   import { inventory } from './lib/Inventory';
+  import { upgrades } from './lib/Upgrades';
 
   let count = $state(Number(localStorage.getItem('count')) || 0);
   let currentBlock = $state(localStorage.getItem('lastBlock') || 'grass_block');
