@@ -344,7 +344,8 @@ export const upgrades = [
                 amount: 10 
               }
           ],
-            effect: { autoClick: 0.1 }
+            effect: { autoClick: 0.3 },
+            boostEffect: { addBoost: 2.8}
           }
         ],
         maxLevel: null,
