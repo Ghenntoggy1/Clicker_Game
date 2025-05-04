@@ -38,5 +38,40 @@ export const soundEffects = [
             'https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b0/Grass_hit5.ogg',
             'https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e0/Grass_hit3.ogg'
         ]
+    },
+    {
+        type: 'glass',
+        sounds: [
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/39/Glass_dig1.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/00/Glass_dig2.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/36/Glass_dig3.ogg'
+        ]
+    },
+    {
+        type: 'deepslate',
+        sounds: [
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/7e/Deepslate_break1.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f0/Deepslate_break2.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/8/89/Deepslate_break3.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/bd/Deepslate_break4.ogg',
+        ]
+    },
+    {
+        type: 'sand',
+        sounds: [
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/07/Sand_dig1.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fc/Sand_dig2.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/03/Sand_dig3.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Sand_dig4.ogg'
+        ]
+    },
+    {
+        type: 'gravel',
+        sounds: [
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ae/Gravel_dig1.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/bb/Gravel_dig2.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/7a/Gravel_dig3.ogg',
+            'https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/27/Gravel_dig4.ogg'
+        ]
     }
 ]
