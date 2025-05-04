@@ -2,86 +2,137 @@ export const blocks = [
     {
         name: 'cobblestone_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'stone',
+        blockImg: 'blocks/cobblestone_block.png',
+        mineralImg: 'materials/stone_mineral.png',
     },
     {
         name: 'debris_block',
         durability: 5,
-        type: 'debris'
+        type: 'debris',
+        invType: 'netherite',
+        blockImg: 'blocks/debris_block.png',
+        mineralImg: 'materials/netherite_mineral.png',
     },
     {
         name: 'grass_block',
         durability: 1,
-        type: 'dirt'
+        type: 'dirt',
+        invType: 'dirt',
+        blockImg: 'blocks/grass_block.png',
+        mineralImg: 'materials/dirt_mineral.png',
     },
     {
         name: 'planks_block',
         durability: 2,
-        type: 'wood'
+        type: 'wood',
+        invType: 'wood',
+        blockImg: 'blocks/planks_block.png',
+        mineralImg: 'materials/wood_mineral.png',
     },
     {
         name: 'ice_block',
         durability: 2,
-        type: 'glass'
+        type: 'glass',
+        invType: null,
+        blockImg: 'blocks/ice_block.png',
+        mineralImg: null,
     },
     {
         name: 'blackstone_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'stone',
+        blockImg: 'blocks/blackstone_block.png',
+        mineralImg: 'materials/stone_mineral.png',
     },
     {
         name: 'deepslate_block',
         durability: 4,
-        type: 'deepslate'
+        type: 'deepslate',
+        invType: 'stone',
+        blockImg: 'blocks/deepslate_block.png',
+        mineralImg: 'materials/stone_mineral.png',
     },
     {
         name: 'coal_ore_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'ores',
+        blockImg: 'blocks/coal_ore_block.png',
+        mineralImg: 'materials/ore_mineral.png',
     },
     {
         name: 'iron_ore_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'ores',
+        blockImg: 'blocks/iron_ore_block.png',
+        mineralImg: 'materials/ore_mineral.png',
     },
     {
         name: 'gold_ore_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'ores',
+        blockImg: 'blocks/gold_ore_block.png',
+        mineralImg: 'materials/ore_mineral.png',
     },
     {
         name: 'diamond_ore_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'ores',
+        blockImg: 'blocks/diamond_ore_block.png',
+        mineralImg: 'materials/ore_mineral.png',
     },
     {
         name: 'emerald_ore_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'emeralds',
+        blockImg: 'blocks/emerald_ore_block.png',
+        mineralImg: 'materials/emerald_mineral.png',
     },
     {
         name: 'lapis_ore_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'ores',
+        blockImg: 'blocks/lapis_ore_block.png',
+        mineralImg: 'materials/ore_mineral.png',
     },
     {
         name: 'redstone_ore_block',
         durability: 3,
-        type: 'stone'
+        type: 'stone',
+        invType: 'ores',
+        blockImg: 'blocks/redstone_ore_block.png',
+        mineralImg: 'materials/ore_mineral.png',
     },
     {
         name: 'sand_block',
         durability: 1,
-        type: 'sand'
+        type: 'sand',
+        invType: 'sand',
+        blockImg: 'blocks/sand_block.png',
+        mineralImg: 'materials/sand_mineral.png',
     },
     {
         name: 'dirt_block',
         durability: 1,
-        type: 'dirt'
+        type: 'dirt',
+        invType: 'dirt',
+        blockImg: 'blocks/dirt_block.png',
+        mineralImg: 'materials/dirt_mineral.png',
     },
     {
         name: 'gravel_block',
         durability: 1,
-        type: 'gravel'
+        type: 'gravel',
+        invType: 'flint',
+        blockImg: 'blocks/gravel_block.png',
+        mineralImg: 'materials/flint_mineral.png',
     }
 ];
