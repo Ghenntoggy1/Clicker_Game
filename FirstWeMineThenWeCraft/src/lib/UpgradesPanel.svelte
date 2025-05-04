@@ -65,7 +65,6 @@
         if (upgrade.maxLevel === null) {
             upgradeCost = upgrade.levels[0].cost;
             if (playerUpgradeLevel !== 0) {
-                console.log(playerUpgradeLevel, upgradeCost);
                 upgradeCost = upgradeCost.map(item => {
                     return {
                         type: item.type,
@@ -88,7 +87,6 @@
         if (upgrade.maxLevel === null) {
             upgradeCost = upgrade.levels[0].cost;
             if (playerUpgradeLevel !== 0) {
-                console.log(playerUpgradeLevel, upgradeCost);
                 upgradeCost = upgradeCost.map(item => {
                     return {
                         type: item.type,
@@ -140,8 +138,6 @@
         for (const costItem of upgradeCost) {
             const inventoryItem = inventoryObj.find(item => item.type === costItem.type);
             if (!inventoryItem || inventoryItem.amount < costItem.amount) {
-                console.log(upgrade.name, inventoryItem, costItem);
-
                 return false;
             }
         }
@@ -199,13 +195,15 @@
                     const upgradeDef = upgrades.find(u => u.name === upgrade.name);
                     if (playerUpgrade.currentLevel === 0) return '0';
                     let effect = null;
+                    let boostEffect = 1;
                     if (upgradeDef.levels.length === 1) {
                         effect = upgradeDef.levels[0].effect;
+                        boostEffect = (upgradeDef.levels[0].boostEffect.addBoost * playerUpgrade.currentLevel);
                     }
                     else {
                         effect = upgradeDef.levels[playerUpgrade.currentLevel - 1]?.effect;
                     }
-                    const returnEffect = [Object.keys(effect)[0].match(/[a-z]+|[A-Z][a-z]*/g).join(' '), Object.values(effect)[0]].join(' ');
+                    const returnEffect = [Object.keys(effect)[0].match(/[a-z]+|[A-Z][a-z]*/g).join(' '), +(Object.values(effect)[0] * boostEffect).toFixed(3)].join(' ');
                     const firstLetter = returnEffect.charAt(0)
                     const firstLetterCap = firstLetter.toUpperCase()
                     const remainingLetters = returnEffect.slice(1)
