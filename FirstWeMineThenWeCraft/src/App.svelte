@@ -61,15 +61,27 @@
     </header>
     <hr class="hr border-t-2" />
     <div class="flex flex-col md:flex-row min-h-screen px-4 pt-4 pb-4 md:pt-0 md:pb-0">
-      <div class="flex flex-col items-center justify-center w-full md:w-1/3 p-4 flex-grow">
-        <h1 class="h1 text-lg font-bold mb-4">Blocks Mined: {count}</h1>
-        <button 
-          onclick={increment}
-          class="w-64 h-64 flex items-center justify-center bg-cover bg-center hover:scale-105 active:scale-95 !transition-transform !duration-100"
-          style={`background-image: url(${currentBlockImg})`}
-          aria-label="Mine a block"
-        >
-        </button>
+      <div class='flex flex-col items-center justify-center w-full md:w-1/3 px-4 pt-4 flex-grow'>
+        <h1 class="h1 text-lg font-bold mb-4">Inventory</h1>
+        <div class="grid grid-cols-4 xl:grid-cols-8 gap-4 w-full justify-items-center">
+          {#each inventoryObj as item}
+            <div class="flex flex-col items-center">
+              <img src={blocks.find((block) => block.invType === item.type).mineralImg} alt={item.type} class="w-10 h-10 mb-2" />
+              <span class="text-sm">{item.type}</span>
+              <span class="text-xs">{item.amount}/{item.maxAmount}</span>
+            </div>
+          {/each}
+        </div>
+        <div class="flex flex-col items-center justify-center w-full md:w-1/3 flex-grow">
+          <h1 class="h1 text-lg font-bold mb-4 whitespace-nowrap">Blocks Mined: {count}</h1>
+          <button 
+            onclick={increment}
+            class="w-64 h-64 flex items-center justify-center bg-cover bg-center hover:scale-105 active:scale-95 !transition-transform !duration-100"
+            style={`background-image: url(${currentBlockImg})`}
+            aria-label="Mine a block"
+          >
+          </button>
+        </div>
       </div>
       <span class="vr hidden md:block border-l-2"></span>
       <hr class="hr block: md:hidden border-t-2" />
