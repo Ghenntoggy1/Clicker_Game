@@ -2,11 +2,16 @@
   import ThemeSwitch from './lib/ThemeSwitch.svelte';
   import { blocks } from './lib/Blocks.js';
   import { soundEffects } from './lib/SoundEffects.js';
+  import { inventory } from './lib/Inventory';
 
   let count = $state(Number(localStorage.getItem('count')) || 0);
   let currentBlock = $state(localStorage.getItem('lastBlock') || 'grass_block');
   let currentBlockType = $state(blocks.find((block) => block.name === currentBlock).type);
+  let currentBlockImg = $state(blocks.find((block) => block.name === currentBlock).blockImg);
+  let currentBlockInvType = $state(blocks.find((block) => block.name === currentBlock).invType);
   let currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
+  let inventoryObj = $state(JSON.parse(localStorage.getItem('inventory')) || inventory);
+
   let song = null;
   let timesToHit = $state(1);
 
@@ -24,11 +29,23 @@
       count++;
       localStorage.setItem('count', count.toString());
 
+      currentBlockInvType = blocks.find((block) => block.name === currentBlock).invType;
+
+      let currentInventoryMineral = currentBlockInvType ? inventoryObj.find(i => i.type === currentBlockInvType) : null;
+      if (currentInventoryMineral) {
+        currentInventoryMineral.amount = currentInventoryMineral.amount < currentInventoryMineral.maxAmount ? (currentInventoryMineral.amount || 0) + 1 : currentInventoryMineral.maxAmount;
+      }
+      
+      localStorage.setItem('inventory', JSON.stringify(inventoryObj));
+
       currentBlock = blocks[Math.floor(Math.random() * blocks.length)].name;
       localStorage.setItem('lastBlock', currentBlock);
+
+      currentBlockImg = blocks.find((block) => block.name === currentBlock).blockImg;
       
       currentBlockType = blocks.find((block) => block.name === currentBlock).type;
       currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
+
       timesToHit = blocks.find((block) => block.name === currentBlock).durability;
     }
   };
@@ -49,7 +66,7 @@
         <button 
           onclick={increment}
           class="w-64 h-64 flex items-center justify-center bg-cover bg-center hover:scale-105 active:scale-95 !transition-transform !duration-100"
-          style={`background-image: url(blocks/${currentBlock}.png)`}
+          style={`background-image: url(${currentBlockImg})`}
           aria-label="Mine a block"
         >
         </button>
@@ -63,21 +80,3 @@
     </div>
   </div>
 </main>
-
-<!--   function startRandomPlayback() {
-    function scheduleNext() {
-      const delay = Math.floor(Math.random() * 1000000);
-      setTimeout(() => {
-        song = new Audio('https://audio.jukehost.co.uk/QdO7Ryp9QbvNrNWWd6WXqBtNJvGt9aFQ');
-        song.volume = 0.4;
-        song.play();
-        scheduleNext();
-      }, delay);
-    }
-
-    scheduleNext();
-  }
-
-  onMount(() => {
-    startRandomPlayback();
-  }); -->
