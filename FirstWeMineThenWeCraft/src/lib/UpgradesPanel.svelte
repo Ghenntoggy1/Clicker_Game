@@ -62,8 +62,14 @@
         const playerUpgrade = playerUpgrades.find(u => u.name === upgrade.name);
         const playerUpgradeLevel = playerUpgrade.currentLevel;
         let upgradeCost = [];
-        if (!upgrade.maxLevel) {
-            upgradeCost = upgrade.levels[playerUpgradeLevel].cost;
+        if (upgrade.maxLevel === null) {
+            upgradeCost = upgrade.levels[0].cost;
+            upgradeCost = upgradeCost.map(item => {
+                return {
+                    type: item.type,
+                    amount: Math.round(item.amount * 1.3)
+                };
+            });
         }
         else {
             upgradeCost = upgrade.levels[playerUpgradeLevel].cost;
@@ -184,7 +190,13 @@
                     const playerUpgrade = playerUpgrades.find(u => u.name === upgrade.name);
                     const upgradeDef = upgrades.find(u => u.name === upgrade.name);
                     if (playerUpgrade.currentLevel === 0) return '0';
-                    const effect = upgradeDef.levels[playerUpgrade.currentLevel - 1]?.effect;
+                    let effect = null;
+                    if (upgradeDef.levels.length === 1) {
+                        effect = upgradeDef.levels[0].effect;
+                    }
+                    else {
+                        effect = upgradeDef.levels[playerUpgrade.currentLevel - 1]?.effect;
+                    }
                     const returnEffect = [Object.keys(effect)[0].match(/[a-z]+|[A-Z][a-z]*/g).join(' '), Object.values(effect)[0]].join(' ');
                     const firstLetter = returnEffect.charAt(0)
                     const firstLetterCap = firstLetter.toUpperCase()
