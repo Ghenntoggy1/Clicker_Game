@@ -3,7 +3,6 @@
   import { blocks } from './lib/Blocks.js';
   import { soundEffects } from './lib/SoundEffects.js';
   import { inventory } from './lib/Inventory';
-  import { upgrades } from './lib/Upgrades';
   import UpgradesPanel from './lib/UpgradesPanel.svelte';
   import { onMount } from 'svelte';
 
