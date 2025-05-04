@@ -2,24 +2,23 @@
     import { onMount } from "svelte";
     import { upgrades } from "./Upgrades";
 
-    export let playerUpgrades;
-    export let inventoryObj;
-    
+    let {stateObj} = $props();
+
+    let playerUpgrades = $derived(stateObj.playerUpgradesState);
+    let inventoryObj = $derived(stateObj.inventoryObjState);
+
     const buyUpgrade = (upgrade) => {
         const upgradeCost = checkCost(upgrade);
         console.log(upgradeCost);
         console.log(inventoryObj);
-        for (const item of upgradeCost) {
-            const inventoryItem = inventoryObj.find(i => i.name === item.name);
-            if (inventoryItem) {
-                inventoryItem.count -= item.count;
-                if (inventoryItem.count <= 0) {
-                    inventoryObj = inventoryObj.filter(i => i.name !== item.name);
-                }
-            }
-        }
-        console.log(inventoryObj);
+        const requiredTypes = upgradeCost.map(item => item.type);
+        const matchingInventoryItems = inventoryObj.filter(i =>
+            requiredTypes.includes(i.type)
+        );
 
+        console.log(matchingInventoryItems);
+
+        // TODO: FIND A WAY TO MODIFY GLOBALLY THE INVENTORY OBJECT
         // localStorage.setItem('playerUpgrades', JSON.stringify(playerUpgrades));
         // localStorage.setItem('inventory', JSON.stringify(inventoryObj));
     }
@@ -55,7 +54,7 @@
             });
         }
         else {
-            upgradeCost = upgrade.levels[playerUpgradeLevel].cost;
+            upgradeCost = upgrade.levels[playerUpgradeLevel === 0 ? 0 : playerUpgradeLevel].cost;
         }
         return upgradeCost.map(item => `${item.amount} ${item.type}`).join(", ");
     }
@@ -63,9 +62,40 @@
     const getIconByUpgrade = (upgrade) => {
         const playerUpgrade = playerUpgrades.find(u => u.name === upgrade.name);
         const playerUpgradeLevel = playerUpgrade.currentLevel;
-        const icon = upgrade.type === 'tool' ? upgrade.levels[playerUpgradeLevel].icon : upgrade.icon;
+        const icon = upgrade.type === 'tool' ? upgrade.levels[playerUpgradeLevel === 0 ? 0 : playerUpgradeLevel - 1].icon : upgrade.icon;
+        if (playerUpgradeLevel === 0) {
+            switch (upgrade.name) {
+                case 'Pickaxe':
+                    return `<img src="upgrades/pickaxe_empty.webp" alt="${upgrade.name} icon" class="w-12 h-12 md:w-8 md:h-8 lg:w-16 lg:h-16" />`;
+                case 'Shovel':
+                    return `<img src="upgrades/shovel_empty.webp" alt="${upgrade.name} icon" class="w-12 h-12 md:w-8 md:h-8 lg:w-16 lg:h-16" />`;
+                case 'Axe':
+                    return `<img src="upgrades/axe_empty.webp" alt="${upgrade.name} icon" class="w-12 h-12 md:w-8 md:h-8 lg:w-16 lg:h-16" />`;
+                case 'Fortune':
+                    return `<img src="upgrades/enchantment_book_empty.png" alt="${upgrade.name} icon" class="w-12 h-12 md:w-8 md:h-8 lg:w-16 lg:h-16" />`;
+                case 'AutoMine':
+                    return `<img src="upgrades/enchantment_book_empty.png" alt="${upgrade.name} icon" class="w-12 h-12 md:w-8 md:h-8 lg:w-16 lg:h-16" />`;
+                default:
+                    break;
+            }
+        }
         return `<img src="upgrades/${icon}" alt="${upgrade.name} icon" class="w-12 h-12 md:w-8 md:h-8 lg:w-16 lg:h-16" />`;
     }
+
+    const isBuyEnabled = (upgrade) => {
+        const playerUpgrade = playerUpgrades.find(u => u.name === upgrade.name);
+        const playerUpgradeLevel = playerUpgrade.currentLevel;
+
+        const isMaxed = upgrade.maxLevel !== null
+            ? playerUpgradeLevel >= upgrade.maxLevel
+            : false;
+
+        if (isMaxed) return false;
+
+        
+
+        return true;
+    };
 </script>
 
 <div>
@@ -75,10 +105,14 @@
                 {@html getIconByUpgrade(upgrade)}
                 <h3 class="h5 text-sm md:text-lg">{upgrade.name}</h3>
                 <p>{upgrade.description}</p>
-                <p>Cost: {getCostByUpgrade(upgrade)}</p>
+                {#if !upgrade.maxLevel || playerUpgrades.find(u => u.name === upgrade.name).currentLevel < upgrade.maxLevel}
+                    <p>Cost: {getCostByUpgrade(upgrade)}</p>
+                {:else if upgrade.maxLevel}
+                    <p>Cost: MAX</p>
+                {/if}
                 <p>Current Level: {playerUpgrades.find(u => u.name === upgrade.name).currentLevel}</p>
                 <p>Max Level: {upgrade.maxLevel ? upgrade.maxLevel : "N/A"}</p>
-                <button onclick={() => buyUpgrade(upgrade)} class="mt-2 px-4 py-2 bg-primary-700 rounded">Buy</button>
+                <button  onclick={() => buyUpgrade(upgrade)} class="mt-2 px-4 py-2 bg-primary-700 rounded" disabled={!isBuyEnabled(upgrade)}>Buy</button>
             </div>
         {/each}
     </div>
