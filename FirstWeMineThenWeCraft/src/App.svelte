@@ -118,7 +118,8 @@
     
     if (timesToHit <= 0) {
       count++;
-
+      localStorage.setItem('count', count.toString());
+      
       currentBlockInvType = blocks.find((block) => block.name === currentBlock).invType;
 
       let currentInventoryMineral = currentBlockInvType ? inventoryObjState.find(i => i.type === currentBlockInvType) : null;
