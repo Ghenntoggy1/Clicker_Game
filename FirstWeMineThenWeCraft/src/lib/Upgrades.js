@@ -257,7 +257,7 @@ export const upgrades = [
               level: 1, 
               cost: [
                 {
-                    type: 'emerald', 
+                    type: 'emeralds', 
                     amount: 5 
                 },
                 {
@@ -271,7 +271,7 @@ export const upgrades = [
               level: 2, 
               cost: [
                 {
-                    type: 'emerald', 
+                    type: 'emeralds', 
                     amount: 15 
                 },
                 {
@@ -285,7 +285,7 @@ export const upgrades = [
               level: 3, 
               cost: [
                 {
-                    type: 'emerald', 
+                    type: 'emeralds', 
                     amount: 20 
                 },
                 {
@@ -299,7 +299,7 @@ export const upgrades = [
               level: 4, 
               cost: [
                 {
-                    type: 'emerald', 
+                    type: 'emeralds', 
                     amount: 50 
                 },
                 {
@@ -313,7 +313,7 @@ export const upgrades = [
               level: 5, 
               cost: [
                 {
-                    type: 'emerald', 
+                    type: 'emeralds', 
                     amount: 64 
                 },
                 {

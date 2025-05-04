@@ -16,15 +16,15 @@
   let playerUpgradesState = $state(JSON.parse(localStorage.getItem('playerUpgrades')) || [
         {
             name: 'Pickaxe',
-            currentLevel: 1,
+            currentLevel: 0,
         },
         {
             name: 'Axe',
-            currentLevel: 3,
+            currentLevel: 0,
         },
         {
             name: 'Shovel',
-            currentLevel: 5,
+            currentLevel: 0,
         },
         {
             name: 'Fortune',
@@ -32,7 +32,7 @@
         },
         {
             name: 'AutoMine',
-            currentLevel: 2,
+            currentLevel: 0,
         }
     ]);
   let inventoryObjState = $state(JSON.parse(localStorage.getItem('inventory')) || inventory);
@@ -93,7 +93,7 @@
   };
 </script>
 
-<main class="h-screen lg:overflow-hidden">
+<main class="h-screen">
   <div class="grid grid-rows-[auto_1fr_auto]">
     <header class="sticky top-0 z-10 p-4 shadow-md backdrop-blur-sm">
       <div class="flex justify-between items-center">
