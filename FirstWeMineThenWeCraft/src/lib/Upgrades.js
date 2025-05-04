@@ -38,7 +38,7 @@ export const upgrades = [
                     amount: 30 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 25
                 }
               ],
@@ -53,7 +53,7 @@ export const upgrades = [
                     amount: 35 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 40
                 }
               ],
@@ -68,7 +68,7 @@ export const upgrades = [
                     amount: 50 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 64
                 },
                 {
@@ -121,7 +121,7 @@ export const upgrades = [
                     amount: 30 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 25
                 }
               ],
@@ -136,7 +136,7 @@ export const upgrades = [
                     amount: 35 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 40
                 }
               ],
@@ -151,7 +151,7 @@ export const upgrades = [
                     amount: 50 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 64
                 },
                 {
@@ -204,7 +204,7 @@ export const upgrades = [
                     amount: 25 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 20
                 }
               ],
@@ -219,7 +219,7 @@ export const upgrades = [
                     amount: 30 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 30
                 }
               ],
@@ -234,7 +234,7 @@ export const upgrades = [
                     amount: 45 
                 },
                 {
-                    type: 'ore', 
+                    type: 'ores', 
                     amount: 50
                 },
                 {
@@ -251,7 +251,7 @@ export const upgrades = [
     {
       type: 'enchantment',
       name: 'Fortune',
-      description: 'Increases the chance of getting more resources from mining.',
+      description: 'Increases the chance of getting mores resources from mining.',
       levels: [
           { 
             level: 1, 

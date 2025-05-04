@@ -16,19 +16,19 @@
   let playerUpgradesState = $state(JSON.parse(localStorage.getItem('playerUpgrades')) || [
         {
             name: 'Pickaxe',
-            currentLevel: 5,
+            currentLevel: 0,
         },
         {
             name: 'Axe',
-            currentLevel: 5,
+            currentLevel: 0,
         },
         {
             name: 'Shovel',
-            currentLevel: 5,
+            currentLevel: 0,
         },
         {
             name: 'Fortune',
-            currentLevel: 5,
+            currentLevel: 0,
         },
         {
             name: 'AutoMine',
