@@ -1,0 +1,28 @@
+{
+  "name": "First We Mine, Then We Craft!",
+  "short_name": "Let's Minecraft!",
+  "start_url": "https://ghenntoggy1.github.io/Clicker_Game/",
+  "scope": "https://ghenntoggy1.github.io/Clicker_Game/",
+  "description": "A fun clicker game made as a Laboratory Work!",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://ghenntoggy1.github.io/Clicker_Game/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://ghenntoggy1.github.io/Clicker_Game/logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://ghenntoggy1.github.io/Clicker_Game/logo.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml"
+    }
+  ]
+}

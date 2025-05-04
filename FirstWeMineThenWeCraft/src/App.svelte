@@ -63,3 +63,21 @@
     </div>
   </div>
 </main>
+
+<!--   function startRandomPlayback() {
+    function scheduleNext() {
+      const delay = Math.floor(Math.random() * 1000000);
+      setTimeout(() => {
+        song = new Audio('https://audio.jukehost.co.uk/QdO7Ryp9QbvNrNWWd6WXqBtNJvGt9aFQ');
+        song.volume = 0.4;
+        song.play();
+        scheduleNext();
+      }, delay);
+    }
+
+    scheduleNext();
+  }
+
+  onMount(() => {
+    startRandomPlayback();
+  }); -->
