@@ -1,20 +1,34 @@
 <script>
   import ThemeSwitch from './lib/ThemeSwitch.svelte';
   import { blocks } from './lib/Blocks.js';
+  import { soundEffects } from './lib/SoundEffects.js';
 
   let count = $state(Number(localStorage.getItem('count')) || 0);
   let currentBlock = $state(localStorage.getItem('lastBlock') || 'grass_block');
+  let currentBlockType = $state(blocks.find((block) => block.name === currentBlock).type);
+  let currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
+  let song = null;
   let timesToHit = $state(1);
 
   const increment = () => {
     timesToHit--;
+    currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
+    if (currentTypeSounds.length > 0) {
+      const soundUrl = currentTypeSounds[Math.floor(Math.random() * currentTypeSounds.length)];
+      song = new Audio(soundUrl);
+      song.volume = 0.4;
+      song.play();
+    }
+    
     if (timesToHit <= 0) {
       count++;
       localStorage.setItem('count', count.toString());
 
       currentBlock = blocks[Math.floor(Math.random() * blocks.length)].name;
       localStorage.setItem('lastBlock', currentBlock);
-
+      
+      currentBlockType = blocks.find((block) => block.name === currentBlock).type;
+      currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
       timesToHit = blocks.find((block) => block.name === currentBlock).durability;
     }
   };
