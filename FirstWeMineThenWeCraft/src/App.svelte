@@ -5,6 +5,7 @@
   import { inventory } from './lib/Inventory';
   import UpgradesPanel from './lib/UpgradesPanel.svelte';
   import { onMount } from 'svelte';
+  import { upgrades } from './lib/Upgrades';
 
   let count = $state(Number(localStorage.getItem('count')) || 0);
   let currentBlock = $state(localStorage.getItem('lastBlock') || 'grass_block');
@@ -35,7 +36,6 @@
         }
     ]);
   let inventoryObjState = $state(JSON.parse(localStorage.getItem('inventory')) || inventory);
-
   let song = null;
   let timesToHit = $state(1);
 
@@ -54,8 +54,60 @@
     }
   })
 
+  const getClickBoost = (currentBlockType) => {
+    let playerUpgradeLevel = 0;
+    let currentTypeTool = null;
+    switch (currentBlockType) {
+      case 'sand':
+      case 'gravel':
+      case 'dirt':
+        playerUpgradeLevel =  playerUpgradesState.find(upgrade => upgrade.name === 'Shovel').currentLevel;
+        currentTypeTool = 'Shovel';
+        break;
+      case 'stone':
+      case 'debris':
+      case 'glass':
+      case 'deepslate':
+        playerUpgradeLevel = playerUpgradesState.find(upgrade => upgrade.name === 'Pickaxe').currentLevel;
+        currentTypeTool = 'Pickaxe';
+        break;
+      case 'wood':
+        playerUpgradeLevel = playerUpgradesState.find(upgrade => upgrade.name === 'Axe').currentLevel;
+        currentTypeTool = 'Axe';
+        break;
+      default:
+        playerUpgradeLevel = 0;
+        currentTypeTool = null;
+        break;
+    }
+    if (playerUpgradeLevel === 0) {
+      return 0;
+    }
+    return upgrades.find(upgrade => upgrade.name === currentTypeTool).levels.find(level => level.level === playerUpgradeLevel).effect.durabilityReduction;
+  };
+
+  const getFortuneBoost = () => {
+    let playerUpgradeLevel = playerUpgradesState.find(upgrade => upgrade.name === 'Fortune').currentLevel;
+    if (playerUpgradeLevel === 0) {
+      return 0;
+    }
+    let fortuneChance = upgrades.find(upgrade => upgrade.name === 'Fortune').levels.find(level => level.level === playerUpgradeLevel).effect.resourceChance;
+    let fortuneBoost = 0;
+    if (Math.random() < fortuneChance) {
+      let baseValue = Math.floor(Math.random() * 3);
+      let fortuneChanceAdd = fortuneChance === 0.1 ? (fortuneChance * 10) + 1 : (fortuneChance * 10);
+      let addValue = Math.floor(Math.random() * fortuneChanceAdd);
+      fortuneBoost = baseValue + addValue;
+    }
+    return fortuneBoost;
+  }
+
   const increment = () => {
-    timesToHit--;
+    const clickBoost = 1 + getClickBoost(currentBlockType);
+    timesToHit -= clickBoost;
+    const fortuneBoost = getFortuneBoost();
+
+
     currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
     if (currentTypeSounds.length > 0) {
       const soundUrl = currentTypeSounds[Math.floor(Math.random() * currentTypeSounds.length)];
@@ -66,13 +118,12 @@
     
     if (timesToHit <= 0) {
       count++;
-      localStorage.setItem('count', count.toString());
 
       currentBlockInvType = blocks.find((block) => block.name === currentBlock).invType;
 
       let currentInventoryMineral = currentBlockInvType ? inventoryObjState.find(i => i.type === currentBlockInvType) : null;
       if (currentInventoryMineral) {
-        currentInventoryMineral.amount = currentInventoryMineral.amount < currentInventoryMineral.maxAmount ? (currentInventoryMineral.amount || 0) + 1 : currentInventoryMineral.maxAmount;
+        currentInventoryMineral.amount = currentInventoryMineral.amount < currentInventoryMineral.maxAmount ? (currentInventoryMineral.amount || 0) + 1 + fortuneBoost : currentInventoryMineral.maxAmount;
       }
       
       localStorage.setItem('inventory', JSON.stringify(inventoryObjState));

@@ -178,6 +178,22 @@
                     <p>Cost: MAX</p>
                 {/if}
                 <p>Current Level: {playerUpgrades.find(u => u.name === upgrade.name).currentLevel}</p>
+                <p>
+                    Effect: {
+                    (() => {
+                    const playerUpgrade = playerUpgrades.find(u => u.name === upgrade.name);
+                    const upgradeDef = upgrades.find(u => u.name === upgrade.name);
+                    if (playerUpgrade.currentLevel === 0) return '0';
+                    const effect = upgradeDef.levels[playerUpgrade.currentLevel - 1]?.effect;
+                    const returnEffect = [Object.keys(effect)[0].match(/[a-z]+|[A-Z][a-z]*/g).join(' '), Object.values(effect)[0]].join(' ');
+                    const firstLetter = returnEffect.charAt(0)
+                    const firstLetterCap = firstLetter.toUpperCase()
+                    const remainingLetters = returnEffect.slice(1)
+                    const capitalizedWord = firstLetterCap + remainingLetters
+                    return capitalizedWord;
+                    })()
+                }
+                </p>
                 <p>Max Level: {upgrade.maxLevel ? upgrade.maxLevel : "N/A"}</p>
                 <button onclick={() => buyUpgrade(upgrade)} class="mt-2 px-4 py-2 bg-primary-700 text-white rounded hover:bg-primary-800 transition-colors" disabled={!isBuyEnabled(upgrade)}>Buy</button>
             </div>
