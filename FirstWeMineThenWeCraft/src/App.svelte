@@ -184,17 +184,12 @@
   <div class="grid grid-rows-[auto_1fr_auto]">
     <header class="sticky top-0 z-10 p-4 shadow-md backdrop-blur-sm">
       <div class="grid grid-cols-3 items-center">
-        <!-- Left: Title -->
         <div class="text-left">
           <h1 class="h1 text-lg md:text-2xl font-bold">First We Mine, Then We Craft</h1>
         </div>
-    
-        <!-- Center: Theme Switch -->
         <div class="flex justify-center">
           <ThemeSwitch />
         </div>
-    
-        <!-- Right: Reset Button -->
         <div class="flex justify-end">
           <button class="btn btn-primary" onclick={reset} aria-label="Reset Game">Reset</button>
         </div>
