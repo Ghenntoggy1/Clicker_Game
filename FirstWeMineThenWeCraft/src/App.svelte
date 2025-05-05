@@ -87,6 +87,7 @@
         currentLevel: 0,
       }
     ]));
+    localStorage.setItem('theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     location.reload();
   };
 
