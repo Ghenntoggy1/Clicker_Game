@@ -54,6 +54,42 @@
     }
   })
 
+  const reset = () => {
+    count = 0;
+    currentBlock = 'grass_block';
+    currentBlockType = blocks.find((block) => block.name === currentBlock).type;
+    currentBlockImg = blocks.find((block) => block.name === currentBlock).blockImg;
+    currentBlockInvType = blocks.find((block) => block.name === currentBlock).invType;
+    currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
+    timesToHit = 1;
+    localStorage.setItem('count', count.toString());
+    localStorage.setItem('lastBlock', currentBlock);
+    localStorage.setItem('inventory', JSON.stringify(inventory));
+    localStorage.setItem('playerUpgrades', JSON.stringify([
+      {
+        name: 'Pickaxe',
+        currentLevel: 0,
+      },
+      {
+        name: 'Axe',
+        currentLevel: 0,
+      },
+      {
+        name: 'Shovel',
+        currentLevel: 0,
+      },
+      {
+        name: 'Fortune',
+        currentLevel: 0,
+      },
+      {
+        name: 'AutoMine',
+        currentLevel: 0,
+      }
+    ]));
+    location.reload();
+  };
+
   const getClickBoost = (currentBlockType) => {
     let playerUpgradeLevel = 0;
     let currentTypeTool = null;
@@ -147,9 +183,21 @@
 <main class="h-screen">
   <div class="grid grid-rows-[auto_1fr_auto]">
     <header class="sticky top-0 z-10 p-4 shadow-md backdrop-blur-sm">
-      <div class="flex justify-between items-center">
-        <h1 class="h1 text-lg md:text-2xl font-bold">First We Mine, Then We Craft</h1>
-        <ThemeSwitch />
+      <div class="grid grid-cols-3 items-center">
+        <!-- Left: Title -->
+        <div class="text-left">
+          <h1 class="h1 text-lg md:text-2xl font-bold">First We Mine, Then We Craft</h1>
+        </div>
+    
+        <!-- Center: Theme Switch -->
+        <div class="flex justify-center">
+          <ThemeSwitch />
+        </div>
+    
+        <!-- Right: Reset Button -->
+        <div class="flex justify-end">
+          <button class="btn btn-primary" onclick={reset} aria-label="Reset Game">Reset</button>
+        </div>
       </div>
     </header>
     <hr class="hr border-t-2" />
