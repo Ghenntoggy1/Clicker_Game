@@ -9,11 +9,11 @@
 
   let count = $state(Number(localStorage.getItem('count')) || 0);
   let currentBlock = $state(localStorage.getItem('lastBlock') || 'grass_block');
-  let currentBlockType = $state(blocks.find((block) => block.name === currentBlock).type);
-  let currentBlockImg = $state(blocks.find((block) => block.name === currentBlock).blockImg);
-  let currentBlockInvType = $state(blocks.find((block) => block.name === currentBlock).invType);
+  let currentBlockType = $derived(blocks.find((block) => block.name === currentBlock).type);
+  let currentBlockImg = $derived(blocks.find((block) => block.name === currentBlock).blockImg);
+  let currentBlockInvType = $derived(blocks.find((block) => block.name === currentBlock).invType);
   let currentTypeSounds = soundEffects.find(s => s.type === currentBlockType)?.sounds || [];
-  let playerUpgradesState = $state(JSON.parse(localStorage.getItem('playerUpgrades')) || [
+  let playerUpgradesState = $derived(JSON.parse(localStorage.getItem('playerUpgrades')) || [
         {
             name: 'Pickaxe',
             currentLevel: 0,
@@ -38,6 +38,34 @@
   let inventoryObjState = $state(JSON.parse(localStorage.getItem('inventory')) || inventory);
   let song = null;
   let timesToHit = $state(1);
+
+  let currentCursor = $derived.by(() => {
+    let currentTypeTool = null;
+    switch (currentBlockType) {
+      case 'sand':
+      case 'gravel':
+      case 'dirt':
+        currentTypeTool = 'Shovel';
+        break;
+      case 'stone':
+      case 'debris':
+      case 'glass':
+      case 'deepslate':
+        currentTypeTool = 'Pickaxe';
+        break;
+      case 'wood':
+        currentTypeTool = 'Axe';
+        break;
+      default:
+        currentTypeTool = null;
+        break;
+    }
+    const currentPlayerLevel = playerUpgradesState.find(upgrade => upgrade.name === currentTypeTool).currentLevel;
+    const currentPlayerToolObj = upgrades.find(upgrade => upgrade.name === currentTypeTool);
+    
+    const currentTypeToolIcon = currentPlayerToolObj?.levels.find(level => level.level === currentPlayerLevel)?.icon || '/hand.webp';
+    return ('cursors' + currentTypeToolIcon.split('.')[0] + '.png');
+  })
 
   onMount(() => {
     if (localStorage.getItem('count') === null) {
@@ -139,34 +167,6 @@
     return fortuneBoost;
   };
 
-  const getCurrentTool = () => {
-    let currentTypeTool = null;
-    switch (currentBlockType) {
-      case 'sand':
-      case 'gravel':
-      case 'dirt':
-        currentTypeTool = 'Shovel';
-        break;
-      case 'stone':
-      case 'debris':
-      case 'glass':
-      case 'deepslate':
-        currentTypeTool = 'Pickaxe';
-        break;
-      case 'wood':
-        currentTypeTool = 'Axe';
-        break;
-      default:
-        currentTypeTool = null;
-        break;
-    }
-    const currentPlayerLevel = playerUpgradesState.find(upgrade => upgrade.name === currentTypeTool).currentLevel;
-    const currentPlayerToolObj = upgrades.find(upgrade => upgrade.name === currentTypeTool);
-    
-    const currentTypeToolIcon = currentPlayerToolObj?.levels.find(level => level.level === currentPlayerLevel)?.icon || '/hand.webp';
-    return ('cursors' + currentTypeToolIcon.split('.')[0] + '.png');
-  }
-
   const increment = () => {
     const clickBoost = 1 + getClickBoost(currentBlockType);
     timesToHit -= clickBoost;
@@ -180,7 +180,7 @@
       song.volume = 0.4;
       song.play();
     }
-    console.log(getCurrentTool());
+
     if (timesToHit <= 0) {
       count++;
       localStorage.setItem('count', count.toString());
@@ -242,7 +242,7 @@
           <button 
             onclick={increment}
             class="w-64 h-64 flex items-center justify-center bg-cover bg-center hover:scale-105 active:scale-95 !transition-transform !duration-100"
-            style={`background-image: url(${currentBlockImg}); cursor: url(${getCurrentTool()}), pointer;`}
+            style={`background-image: url(${currentBlockImg}); cursor: url(${currentCursor}), pointer;`}
             aria-label="Mine a block"
           >
           </button>
